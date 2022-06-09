@@ -36,7 +36,7 @@ const Title = styled.a`
     text-decoration: none;
 
     @media screen and (max-width: 768px) {
-        font-size: 1.4em;
+        font-size: 1em;
     }
 `;
 
