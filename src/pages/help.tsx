@@ -13,14 +13,14 @@ const Wrapper = styled.div`
 const Stack = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 6px;
 `;
 
 const help = (): React.ReactElement => (
     <Container>
         <Wrapper>
             {hangulAlphabet.map((obj) => {
-                const { letter, romaji, mnemonic, name, nameInKorean } = obj;
+                const { letter, romaji, mnemonic, name, nameInKorean, audioSrc } = obj;
                 return (
                     <Stack key={letter}>
                         <span>
@@ -37,6 +37,9 @@ const help = (): React.ReactElement => (
                         <span>
                             <strong>name</strong>: {name} / {nameInKorean}
                         </span>
+                        <audio controls>
+                            <source src={audioSrc} type="audio/mpeg" />
+                        </audio>
                     </Stack>
                 );
             })}

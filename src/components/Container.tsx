@@ -28,10 +28,12 @@ const Navigation = styled.div`
     gap: 14px;
 `;
 
-const Title = styled.span`
+const Title = styled.a`
+    flex: 1;
+    color: black;
     font-size: 2em;
     font-weight: 700;
-    flex: 1;
+    text-decoration: none;
 
     @media screen and (max-width: 768px) {
         font-size: 1.4em;
@@ -53,6 +55,7 @@ const Link = styled.a`
 
 const TITLE = 'Hangul House';
 const DESCRIPTION = 'hangul practice';
+const FAVICON_URL = '/favicon.png';
 const PAGE_URL = 'https://hangul.house';
 const TWITTER_URL = 'https://twitter.com/ssamkough';
 
@@ -67,7 +70,7 @@ const Container = ({ children }: Props): React.ReactElement => {
     return (
         <>
             <Head>
-                <link rel="icon" type="image/x-icon" href="/favicon.png" />
+                <link rel="icon" type="image/png" href={FAVICON_URL} />
                 <title>{TITLE}</title>
                 <meta name="description" content={DESCRIPTION} />
 
@@ -87,14 +90,14 @@ const Container = ({ children }: Props): React.ReactElement => {
             <Body>
                 <Wrapper>
                     <Navigation>
-                        <Title>{TITLE} 🏠</Title>
-                        <Link href={'/'} onClick={(event) => handleLinkClick(event, '/')}>
+                        <Title href="/">{TITLE} 🏠</Title>
+                        <Link href="/" onClick={(event) => handleLinkClick(event, '/')}>
                             Game
                         </Link>
-                        <Link href={'/about'} onClick={(event) => handleLinkClick(event, '/about')}>
+                        <Link href="/about" onClick={(event) => handleLinkClick(event, '/about')}>
                             About
                         </Link>
-                        <Link href={'/help'} onClick={(event) => handleLinkClick(event, '/help')}>
+                        <Link href="/help" onClick={(event) => handleLinkClick(event, '/help')}>
                             Help
                         </Link>
                     </Navigation>
