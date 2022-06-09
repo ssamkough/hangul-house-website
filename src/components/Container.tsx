@@ -25,7 +25,7 @@ const Navigation = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 14px;
 `;
 
 const Title = styled.span`
