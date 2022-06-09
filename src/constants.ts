@@ -48,7 +48,7 @@ export interface HangulLetterDetail {
     mnemonic?: string;
 }
 
-export const hanguAlphabet: HangulLetterDetail[] = [
+export const hangulAlphabet: HangulLetterDetail[] = [
     {
         letter: 'ㄱ',
         name: 'giyeok',

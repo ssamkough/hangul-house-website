@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Container from './components/Container';
-import { hanguAlphabet, HangulLetterDetail } from './constants';
+import Container from '../components/Container';
+import { hangulAlphabet, HangulLetterDetail } from '../constants';
 
-const LetterStack = styled.div`
+const Stack = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8px;
 `;
 
-const Letter = styled.span`
+const BigFont = styled.span`
     font-size: 4em;
 `;
 
 const StyledInput = styled.input`
+    font-size: 2em;
+    height: 40px;
     max-width: 200px;
 `;
 
-function shuffle(array: HangulLetterDetail[]) {
+const shuffle = (array: HangulLetterDetail[]) => {
     let currentIndex = array.length,
         randomIndex;
 
@@ -32,13 +34,13 @@ function shuffle(array: HangulLetterDetail[]) {
     }
 
     return array;
-}
+};
 
-const Home = (): React.ReactElement | null => {
+const index = (): React.ReactElement | null => {
     const [currentLetterIndex, setCurrentLetterIndex] = useState<number>(0);
     const [letterDetail, setLetterDetails] = useState<HangulLetterDetail>();
     const [randomizedAlphabet, setRandomizedAlphabet] = useState<HangulLetterDetail[]>();
-    const [answerValue, setAnswerValue] = useState<string>();
+    const [answerValue, setAnswerValue] = useState<string>('');
     const [score, setScore] = useState<number>(0);
 
     const enterKeyPressed = (event: KeyboardEvent) => {
@@ -58,7 +60,7 @@ const Home = (): React.ReactElement | null => {
     }, [enterKeyPressed]);
 
     useEffect(() => {
-        setRandomizedAlphabet(shuffle(hanguAlphabet));
+        setRandomizedAlphabet(shuffle(hangulAlphabet));
     }, []);
 
     useEffect(() => {
@@ -68,10 +70,21 @@ const Home = (): React.ReactElement | null => {
     return (
         <Container>
             {currentLetterIndex == 40 ? (
-                <div>your score was: {score}</div>
+                <Stack>
+                    <BigFont>your score was: {score}</BigFont>
+                    <button
+                        onClick={() => {
+                            setScore(0);
+                            setCurrentLetterIndex(0);
+                            setRandomizedAlphabet(shuffle(hangulAlphabet));
+                        }}
+                    >
+                        restart
+                    </button>
+                </Stack>
             ) : (
-                <LetterStack>
-                    <Letter>{letterDetail?.letter}</Letter>
+                <Stack>
+                    <BigFont>{letterDetail?.letter}</BigFont>
                     <StyledInput
                         type="text"
                         id="answer_value"
@@ -79,10 +92,10 @@ const Home = (): React.ReactElement | null => {
                         value={answerValue}
                         onChange={(event) => setAnswerValue(event.target.value)}
                     />
-                </LetterStack>
+                </Stack>
             )}
         </Container>
     );
 };
 
-export default Home;
+export default index;
