@@ -16,7 +16,7 @@ const BigFont = styled.span`
 `;
 
 const StyledInput = styled.input`
-    font-size: 2em;
+    font-size: 30px;
     height: 40px;
     max-width: 200px;
 `;
