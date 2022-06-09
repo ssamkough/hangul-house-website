@@ -36,6 +36,9 @@ const Link = styled.a`
 `;
 
 const TITLE = 'Hangul House';
+const DESCRIPTION = 'made to practice the romanization of hangul';
+const PAGE_URL = 'https://hangul.house';
+const TWITTER_URL = 'https://twitter.com/ssamkough';
 
 const Container = ({ children }: Props): React.ReactElement => {
     const router = useRouter();
@@ -50,6 +53,20 @@ const Container = ({ children }: Props): React.ReactElement => {
             <Head>
                 <link rel="icon" type="image/x-icon" href="/favicon.png" />
                 <title>{TITLE}</title>
+                <meta name="description" content={DESCRIPTION} />
+
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content={TITLE} />
+                <meta property="og:description" content={DESCRIPTION} />
+                <meta property="og:url" content={PAGE_URL} />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:creator" content="@Render_Archive" />
+                <meta name="twitter:title" content={TITLE} />
+                <meta name="twitter:description" content={DESCRIPTION} />
+                <meta name="twitter:url" content={TWITTER_URL} />
+
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
             <Body>
                 <Navigation>
