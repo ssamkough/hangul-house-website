@@ -1,8 +1,46 @@
-type HangulLetter = 'ㄱ' | 'ㄲ' | 'ㄴ' | 'ㄷ' | 'ㄸ' | 'ㄹ' | 'ㅁ' | 'ㅂ' | 'ㅃ' | 'ㅅ' | 
-'ㅆ' | 'ㅇ' | 'ㅈ' | 'ㅉ' | 'ㅊ' | 'ㅋ' | 'ㅌ' | 'ㅍ' | 'ㅎ' | 'ㅏ' | 'ㅐ' | 'ㅑ' | 'ㅒ' | 'ㅓ' | 'ㅔ' | 
-'ㅕ' | 'ㅖ' | 'ㅗ' | 'ㅘ' | 'ㅙ' | 'ㅚ' | 'ㅛ' | 'ㅜ' | 'ㅝ' | 'ㅞ' | 'ㅟ' | 'ㅠ' | 'ㅡ' | 'ㅢ' | 'ㅣ';
+export type HangulLetter =
+    | 'ㄱ'
+    | 'ㄲ'
+    | 'ㄴ'
+    | 'ㄷ'
+    | 'ㄸ'
+    | 'ㄹ'
+    | 'ㅁ'
+    | 'ㅂ'
+    | 'ㅃ'
+    | 'ㅅ'
+    | 'ㅆ'
+    | 'ㅇ'
+    | 'ㅈ'
+    | 'ㅉ'
+    | 'ㅊ'
+    | 'ㅋ'
+    | 'ㅌ'
+    | 'ㅍ'
+    | 'ㅎ'
+    | 'ㅏ'
+    | 'ㅐ'
+    | 'ㅑ'
+    | 'ㅒ'
+    | 'ㅓ'
+    | 'ㅔ'
+    | 'ㅕ'
+    | 'ㅖ'
+    | 'ㅗ'
+    | 'ㅘ'
+    | 'ㅙ'
+    | 'ㅚ'
+    | 'ㅛ'
+    | 'ㅜ'
+    | 'ㅝ'
+    | 'ㅞ'
+    | 'ㅟ'
+    | 'ㅠ'
+    | 'ㅡ'
+    | 'ㅢ'
+    | 'ㅣ';
 
-interface HangulLetterDetail {
+export interface HangulLetterDetail {
     letter: HangulLetter;
     name: string;
     nameInKorean: string;
@@ -248,7 +286,7 @@ export const hanguAlphabet: HangulLetterDetail[] = [
         name: 'eu',
         nameInKorean: '으',
         romaji: 'eu',
-        mnemonic: 'brook'
+        mnemonic: 'brook',
     },
     {
         letter: 'ㅢ',
@@ -261,6 +299,6 @@ export const hanguAlphabet: HangulLetterDetail[] = [
         name: 'i',
         nameInKorean: '이',
         romaji: 'ee',
-        mnemonic: 'tree'
+        mnemonic: 'tree',
     },
-]
+];
