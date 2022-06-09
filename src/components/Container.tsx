@@ -89,7 +89,7 @@ const Container = ({ children }: Props): React.ReactElement => {
                     <Navigation>
                         <Title>{TITLE} 🏠</Title>
                         <Link href={'/'} onClick={(event) => handleLinkClick(event, '/')}>
-                            Home
+                            Game
                         </Link>
                         <Link href={'/about'} onClick={(event) => handleLinkClick(event, '/about')}>
                             About

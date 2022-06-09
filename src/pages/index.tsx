@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Container from '../components/Container';
 import { hangulAlphabet, HangulLetterDetail } from '../constants';
 
+const TOAST_TIME = 1000;
+
 const Stack = styled.div`
     display: flex;
     flex-direction: column;
@@ -17,6 +19,11 @@ const StyledInput = styled.input`
     font-size: 2em;
     height: 40px;
     max-width: 200px;
+`;
+
+const Toast = styled.span<{ color: string }>`
+    font-size: 1.2em;
+    color: ${({ color }) => color};
 `;
 
 const shuffle = (array: HangulLetterDetail[]) => {
@@ -42,13 +49,21 @@ const index = (): React.ReactElement | null => {
     const [randomizedAlphabet, setRandomizedAlphabet] = useState<HangulLetterDetail[]>();
     const [answerValue, setAnswerValue] = useState<string>('');
     const [score, setScore] = useState<number>(0);
+    const [toastColor, setToastColor] = useState<'green' | 'red'>('green');
+    const [toastMessage, setToastMessage] = useState<string | null>();
 
     const enterKeyPressed = (event: KeyboardEvent) => {
         if (event.key === 'Enter' && currentLetterIndex < 40) {
-            if (letterDetail?.romaji === answerValue) {
-                setScore((currentScore) => currentScore + 100);
+            if (letterDetail?.romaji !== answerValue) {
+                setToastColor('red');
+                setToastMessage('wrong');
+                return;
             }
+            setScore((currentScore) => currentScore + 100);
             setCurrentLetterIndex((index) => index + 1);
+            setAnswerValue('');
+            setToastColor('green');
+            setToastMessage('right');
         }
     };
 
@@ -67,33 +82,43 @@ const index = (): React.ReactElement | null => {
         if (randomizedAlphabet) setLetterDetails(randomizedAlphabet[currentLetterIndex]);
     }, [randomizedAlphabet, currentLetterIndex]);
 
+    useEffect(() => {
+        const timeoutId = setTimeout(() => setToastMessage(null), TOAST_TIME);
+        return () => {
+            clearTimeout(timeoutId);
+        };
+    }, [toastMessage, TOAST_TIME]);
+
     return (
         <Container>
-            {currentLetterIndex == 40 ? (
-                <Stack>
-                    <BigFont>your score was: {score}</BigFont>
-                    <button
-                        onClick={() => {
-                            setScore(0);
-                            setCurrentLetterIndex(0);
-                            setRandomizedAlphabet(shuffle(hangulAlphabet));
-                        }}
-                    >
-                        restart
-                    </button>
-                </Stack>
-            ) : (
-                <Stack>
-                    <BigFont>{letterDetail?.letter}</BigFont>
-                    <StyledInput
-                        type="text"
-                        id="answer_value"
-                        name="answer_value"
-                        value={answerValue}
-                        onChange={(event) => setAnswerValue(event.target.value)}
-                    />
-                </Stack>
-            )}
+            <Stack>
+                {currentLetterIndex == 40 ? (
+                    <>
+                        <BigFont>your final score was: {score}</BigFont>
+                        <button
+                            onClick={() => {
+                                setScore(0);
+                                setCurrentLetterIndex(0);
+                                setRandomizedAlphabet(shuffle(hangulAlphabet));
+                            }}
+                        >
+                            restart
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <BigFont>{letterDetail?.letter}</BigFont>
+                        <StyledInput
+                            type="text"
+                            id="answer_value"
+                            name="answer_value"
+                            value={answerValue}
+                            onChange={(event) => setAnswerValue(event.target.value)}
+                        />
+                    </>
+                )}
+                {toastMessage && <Toast color={toastColor}>{toastMessage}</Toast>}
+            </Stack>
         </Container>
     );
 };
