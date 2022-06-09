@@ -61,7 +61,7 @@ const Container = ({ children }: Props): React.ReactElement => {
                 <meta property="og:url" content={PAGE_URL} />
 
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:creator" content="@Render_Archive" />
+                <meta name="twitter:creator" content="@ssamkough" />
                 <meta name="twitter:title" content={TITLE} />
                 <meta name="twitter:description" content={DESCRIPTION} />
                 <meta name="twitter:url" content={TWITTER_URL} />
