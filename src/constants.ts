@@ -254,6 +254,7 @@ export const hangulAlphabet: HangulLetterDetail[] = [
         nameInKorean: '오',
         romaji: 'o',
         audioSrc: 'audio/o.mp3',
+        mnemonic: 'over',
     },
 
     {
@@ -290,6 +291,7 @@ export const hangulAlphabet: HangulLetterDetail[] = [
         nameInKorean: '우',
         romaji: 'u',
         audioSrc: 'audio/u.mp3',
+        mnemonic: 'under',
     },
     {
         letter: 'ㅝ',
