@@ -54,7 +54,7 @@ const index = (): React.ReactElement | null => {
 
     const enterKeyPressed = (event: KeyboardEvent) => {
         if (event.key === 'Enter' && currentLetterIndex < 40) {
-            if (letterDetail?.romaji !== answerValue.toLowerCase()) {
+            if (letterDetail?.romaji !== answerValue.trim().toLowerCase()) {
                 setToastColor('red');
                 setToastMessage('wrong');
                 return;
