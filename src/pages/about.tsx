@@ -9,8 +9,8 @@ const Wrapper = styled.div`
 const about = (): React.ReactElement => (
     <Container>
         <Wrapper>
-            <p>made to practice the romanization of hangul</p>
-            <p>for every correct letter you get it's 100 points</p>
+            <p>made to practice and memorize hangul (specifically the romanization)</p>
+            <p>for every correct letter you get it&apos;s 100 points</p>
         </Wrapper>
     </Container>
 );

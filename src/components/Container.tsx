@@ -52,7 +52,7 @@ const Link = styled.a`
 `;
 
 const TITLE = 'Hangul House';
-const DESCRIPTION = 'made to practice the romanization of hangul';
+const DESCRIPTION = 'hangul practice';
 const PAGE_URL = 'https://hangul.house';
 const TWITTER_URL = 'https://twitter.com/ssamkough';
 
